@@ -1,0 +1,27 @@
+
+<section class="header">
+	<div class="header-wrapper">
+		<div class="header__nav">
+		  	<button class="btn-icon" v-on:click="menuOpen = !menuOpen">
+		  		<i class="fa fa-bars"></i>
+		  	</button>
+		</div>
+		<div>
+			<h1>{{title}}</h1>
+		</div>
+		<div class="header__nav">
+
+		</div>
+	</div>
+	<div v-bind:class="['menu', menuOpen ? 'active' : '' ]">
+		<nav>
+			<router-link to="/">Home</router-link>
+			<router-link to="/cases">Cases</router-link>
+			<router-link to="/about">About</router-link>
+			<router-link to="/embed">Embed</router-link>
+		</nav>
+	</div>
+
+	<div class="menu-overlay" v-if="menuOpen" v-on:click="menuOpen = false"></div>
+
+</section>

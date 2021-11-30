@@ -1,0 +1,89 @@
+.graph {
+
+}
+
+.graph-wrapper {
+	position: relative;
+	svg {
+		display: block;
+	}
+}
+
+$dot-width: 8px;
+.stat-point {
+	position: absolute;
+	z-index: 2;
+	width: $dot-width;
+	height: $dot-width;
+	border-radius: 100%;
+	transform: translate(-50%, -50%);
+	cursor: pointer;
+
+	&:hover {
+		width: $dot-width * 1.5;
+		height: $dot-width * 1.5;
+		z-index: 5;
+
+		.stat-point__value {
+			display: block;
+		}
+	}
+
+	.stat-point__dot {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: #000;
+		z-index: 1;
+		display: block;
+		border-radius: 100%;
+
+		@include smaller-than( $bp-md ) {
+			left: 20%;
+			right: 20%;
+			top: 20%;
+			bottom: 20%;
+		}
+
+		&.stat-point__dot--sm {
+			left: 20%;
+			right: 20%;
+			top: 20%;
+			bottom: 20%;
+		}
+	}
+
+	.stat-point__value {
+		color: white;
+		z-index: 4;
+		top: -30px;
+		left: 50%;
+		margin-left: -25px;
+		position: absolute;
+		width: 50px;
+		padding: 5px 0;
+		font-size: 12px;
+		display: none;
+	}
+}
+
+.legend {
+	font-size: 12px;
+	padding: 20px 0;
+}
+
+.legend-item {
+	display: inline-block;
+	font-weight: bold;
+	padding: 5px;
+
+	.stat-point {
+		position: relative;
+		transform: none;
+		display: inline-block;
+		vertical-align: middle;
+		transform: translateY(-#{$dot-width/2});
+	}
+}

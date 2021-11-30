@@ -1,0 +1,29 @@
+/*
+	Usage:
+	<div class="w-1 w-md-2 w-lg-3">
+*/
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+
+	&.row-reverse {
+		flex-direction: row-reverse;
+	}
+}
+
+@for $i from 1 through 4 {
+	.w-#{$i} {
+		width: #{100% / $i};		
+	}
+}
+
+@each $size, $bp in $breakpoints {
+	@include larger-than( $bp ) {
+		@for $i from 1 through 4 {
+			.w-#{$size}-#{$i} {
+				width: #{100% / $i};
+			}
+		}
+	}
+}

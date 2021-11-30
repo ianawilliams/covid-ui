@@ -1,0 +1,56 @@
+
+<section class="compare">
+  <div class="tabs">
+    <button :class="['btn', currentView == 'table' ? 'active' : '' ]"
+      v-on:click="currentView = 'table' ">
+      <i class="fas fa-table"></i> Table
+    </button>
+    <button :class="['btn', currentView == 'graph' ? 'active' : '' ]"
+     v-on:click="currentView = 'graph' ">
+      <i class="fas fa-chart-line"></i> Graph
+    </button>
+  </div>
+
+  <div class="date-range">
+  	<div class="date-select">
+  		<label for="start">Start</label>
+	  	<input type="date" id="start" name="start" :min="earliest" :max="end" v-model="start">
+  	</div>
+  	<div class="date-select">	
+  		<label for="end">End</label>
+  		<input type="date" id="end" name="end" :min="start" :max="latest" v-model="end">
+  	</div>
+  </div>
+
+  <RegionSelector 
+  	:selected="selectedRegions"
+    :graphView="currentView == 'graph'"
+    @selectChanged="updateSelection"
+    @addItem="addSelection"/>
+
+
+  <div v-if="currentView == 'graph'">
+
+    <div class="compare-graph">
+      <Graph :displayData="selectedRegions"/>
+
+      <div class="embed-wrapper">
+        <button class="btn"
+          v-on:click="embedVisible = !embedVisible">
+          {{ embedVisible ? 'Hide' : 'Show' }} Embed URL
+        </button>
+
+        <div class="embed-url" v-if="embedVisible">
+          <a :href="embedURL" target="_blank">
+            {{ embedURL }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div v-if="currentView == 'table'">
+     <Table :displayData="selectedRegions" />
+  </div>
+</section>
+

@@ -1,0 +1,55 @@
+
+<section class="region-selector">
+	<div class="row">
+		<div
+			class="w-2 w-lg-3"
+			v-for="(item, index) in currentRegions">		
+			
+			<div class="region-item">
+				<div class="selects-wrapper">
+					<select class="region-select"
+						:data-index=" index "
+						v-on:change="$emit('selectChanged', 'region', $event.target.dataset.index, $event.target.value)"
+						v-bind:style="{ borderColor: graphView ? colours[index] : '' }">
+				  		<option 
+				  			v-for="(area, index) in regions"
+				  			:selected="area.label == item.region">
+				  			{{ area.label }}
+				  		</option>
+				  	</select>
+
+				  	<select class="district-select"
+				  		:data-index=" index "
+				  		v-if="item.region !== 'All'"
+				  		v-on:change="$emit('selectChanged', 'district', $event.target.dataset.index, $event.target.value)"
+				  		v-bind:style="{ borderColor: graphView ? colours[index] : '' }">
+				  		<option
+				  			v-for="(district, i) in regions.find( x => x.label === item.region).districts"
+				  			:selected="item.region == district">
+				  			{{ district }}
+				  		</option>
+				  	</select>
+				</div>
+
+				<div class="add-button">
+				  	<button class="btn btn--round"
+				  		v-if="currentRegions.length > 1"
+				  		v-on:click="removeItem(index)">
+						<i class="fa fa-minus"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="w-2 w-lg-3">
+			<div class="table-bottom"
+				v-if="currentRegions.length < maxRegions">
+				<button class="btn btn--round" 
+					v-on:click="$emit('addItem')">
+					<i class="fa fa-plus"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</section>
+

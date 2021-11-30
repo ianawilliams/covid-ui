@@ -1,0 +1,21 @@
+@mixin larger-than( $width ) {
+	@media only screen and (min-width: $width ) {
+		@content;
+	}
+}
+
+/*
+	Smaller width media query subracts 1px so that styles in both
+	larger and smaller mixins apply at the actual width. 
+*/
+@mixin smaller-than( $width ) {
+	@media only screen and (max-width: #{$width - 1px} ) {
+		@content;
+	}
+}
+
+@mixin between-widths( $bp-sm, $bp-lg ) {
+	@media screen and ( min-width: $bp-sm ) and (max-width: #{$bp-lg - 1px}) {
+		@content
+	}
+}

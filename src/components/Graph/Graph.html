@@ -1,0 +1,63 @@
+
+<section class="graph">
+
+  	<div class="graph-wrapper">
+	  	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		 :viewBox="graphView" xml:space="preserve">
+		 	<polyline
+				v-bind:style="{fill: 'none', stroke: '#cbcbcb' }" 
+				:points="getBottomLine()"
+				stroke-width="4"/>
+
+			<polyline v-for="(list, index) in stats"
+				v-bind:style="{fill: 'none', stroke: colours[index] }" 
+				:points="formatPoints(list)"
+				stroke-width="2"/>
+
+			<polyline v-for="(stat, index) in stats[0]"
+				v-bind:style="[{fill: 'none'}, index < 1 ? {stroke: '#cbcbcb'} : {stroke: '#ebebeb'} ]" 
+				:points="getGraphLine(index)"
+				:stroke-width="index < 1 ? 2 : 1"/>
+
+			<text x="0" y="0">
+				{{ highestStat}}
+			</text>
+			<text transform="matrix(1 0 0 1 4.0078 18.2367)" style="font-weight: bold; font-size: 20px;">
+				{{ highestStat}}
+			</text>
+
+			<text transform="matrix(1 0 0 1 7.3655 763.4792)" style="font-weight: bold; font-size: 20px;">
+				0
+			</text>
+		</svg>
+
+
+		<div class="" 
+			v-for="(list, index) in stats">
+			<div class="stat-point"
+				v-for="(stat, key) in list"
+				v-bind:style="{ left: getLeftOffset(key), top: getHeightOffset(stat) }">
+					
+					<span :class="[ 'stat-point__dot', list.length > 15 ? 'stat-point__dot--sm' : '' ]"
+					v-bind:style="{ backgroundColor: colours[index] }"></span>
+					
+					<span class="stat-point__value"
+						v-bind:style="{ backgroundColor: colours[index] }">
+						{{ stat }} 
+					</span>
+				</div>
+		</div>
+	</div>
+
+	<div class="legend">
+		<span class="legend-item" 
+			v-for="(region, i) in displayData"
+			v-bind:style="{ color: colours[i] }">
+			<div class="stat-point"
+				v-bind:style="{ backgroundColor: colours[i] }"></div>
+			{{ region.region }} - {{ region.district }}
+		</span>
+	</div>
+
+</section>
+

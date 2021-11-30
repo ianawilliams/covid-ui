@@ -1,0 +1,45 @@
+.table {
+
+}
+
+.table-wrapper {
+	overflow: auto;
+}
+
+.table-col {
+	min-width: 150px;
+}
+
+.stat-column {
+	width: 100%;
+}
+
+.stat-item {
+	position: relative;
+	padding: 5px;
+
+	&:nth-of-type(2n) {
+		background: $grey;
+	}
+
+	.stat-date {
+		position: absolute;
+		left: 5px;
+	}
+}
+
+.table-row {
+	display: flex;
+}
+
+.table__region {
+	display: block;
+	font-size: 14px;
+}
+
+h3 {
+	padding: 0 5px;
+	font-size: 18px;
+	line-height: 20px;
+	margin-bottom: 10px;
+}

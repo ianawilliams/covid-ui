@@ -1,0 +1,22 @@
+.region-selector {
+	
+}
+
+.region-item {
+	display: flex;
+	padding-bottom: 20px
+}
+
+.add-button {
+	padding-left: 10px;
+	padding-right: 20px;
+}
+
+select {
+	width: 100%;
+	border-bottom: 2px solid $primary;
+}
+
+.selects-wrapper {
+	flex-grow: 2;
+}

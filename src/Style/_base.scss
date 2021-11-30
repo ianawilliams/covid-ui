@@ -1,0 +1,64 @@
+a {
+	color: $primary;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.container {
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.flex-grow {
+	flex-grow: 1;
+}
+
+main {
+	padding: 100px 0;
+}
+
+select {
+	box-sizing: border-box;
+	padding: 0 10px;
+	height: 40px;
+	line-height: 40px;
+	border-radius: 0;
+	margin-bottom: 10px;
+	background: $grey;
+	border: none;
+  	outline: none;
+}
+
+.btn {
+	background: $primary;
+	border: none;
+	height: 40px;
+	color: white;
+	padding: 0 20px;
+	cursor: pointer;
+}
+
+.btn--round {
+	padding: 0;
+	width: 40px;
+	border-radius: 100%;
+}
+
+.btn-icon {
+	cursor: pointer;
+	background: none;
+	border: none;
+	color: $primary;
+}
+
+footer {
+	background: $primary;
+	height: 200px;
+}

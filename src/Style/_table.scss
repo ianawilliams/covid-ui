@@ -1,0 +1,20 @@
+.table-col {
+	display: flex;
+	justify-content: center;
+	flex-grow: 1;
+	flex-basis: 0; 
+
+	&.table-col--date {
+		max-width: 130px;
+		min-width: 120px;
+	}
+}
+
+.table-item {
+	display: flex;
+}
+
+.table-bottom {
+	justify-content: center;
+	width: 100px;
+}

@@ -1,0 +1,42 @@
+
+<section class="table">
+	<div class="table-wrapper">
+		<div class="table-row">
+			<div class="table-col table-col--date">
+				<div class="stat-column">
+					<h3>Date</h3>
+				</div>
+			</div>
+			<div class="table-col" 
+			  v-for="(area, key) in displayData">
+				<div class="stat-column">
+			    	<h3>
+			      		{{ area.region }} <span class="table__region">{{ area.district }}</span>
+			    	</h3>
+			    </div>
+			</div>
+		</div>
+		<div class="table-row">
+			<div class="table-col table-col--date">
+				<div class="stat-column">
+					<div class="stat-item"
+						v-for="(stat, index) in displayData[0].stats">
+							{{ stat[0] | dateFormat }}
+					</div>
+			    </div>
+			</div>
+			<div class="table-col" 
+			  v-for="(area, key) in displayData">
+			  <div class="stat-column">
+			    <div class="stat-column">
+			      <div class="stat-item"
+			        v-for="(stat, index) in area.stats">
+			        {{ stat[4] }}
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</section>
+
